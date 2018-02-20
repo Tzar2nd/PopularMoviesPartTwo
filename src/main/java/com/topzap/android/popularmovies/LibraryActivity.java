@@ -210,7 +210,6 @@ public class LibraryActivity extends AppCompatActivity
 
         if(savedInstanceState != null) {
             spinnerPos = savedInstanceState.getInt("Spinner", 0);
-            spinner.setSelection(spinnerPos);
 
             Parcelable mListState = savedInstanceState.getParcelable(KEY_RECYCLER_STATE);
             mRecyclerView.getLayoutManager().onRestoreInstanceState(mListState);
@@ -227,6 +226,11 @@ public class LibraryActivity extends AppCompatActivity
         // Adapter initialisation moved to onResume() as the adapter must be reinitialised every
         // time the user returns to this LibraryActivity
         startAdapter();
+
+        if (spinner != null) {
+            Log.d(TAG, "onResume: Setting spinner at " + spinner);
+            spinner.setSelection(spinnerPos);
+        }
 
         // Restore recyclerview state including scroll position
         if(mBundleRecyclerViewState != null) {
