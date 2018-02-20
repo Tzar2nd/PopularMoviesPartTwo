@@ -210,6 +210,7 @@ public class LibraryActivity extends AppCompatActivity
 
         if(savedInstanceState != null) {
             spinnerPos = savedInstanceState.getInt("Spinner", 0);
+            spinner.setSelection(spinnerPos);
 
             Parcelable mListState = savedInstanceState.getParcelable(KEY_RECYCLER_STATE);
             mRecyclerView.getLayoutManager().onRestoreInstanceState(mListState);
